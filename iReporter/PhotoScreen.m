@@ -30,6 +30,8 @@
 		[self performSegueWithIdentifier:@"ShowLogin" sender:nil];
 	}
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -136,7 +138,7 @@
 //Ben - added to dismiss the keyboard
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self->fldTitle resignFirstResponder];
-    [self->comment resignFirstResponder];
+   // [self->comment resignFirstResponder];
 
 }
 

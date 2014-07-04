@@ -38,7 +38,8 @@
 		9CFE0B9814E5B12B00408F86 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE0B9314E5B12B00408F86 /* UIImage+Alpha.m */; };
 		9CFE0B9914E5B12B00408F86 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE0B9514E5B12B00408F86 /* UIImage+Resize.m */; };
 		9CFE0B9A14E5B12B00408F86 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE0B9714E5B12B00408F86 /* UIImage+RoundedCorner.m */; };
-		B121CAE71958D150000F295B /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = B121CAE61958D150000F295B /* icon1.png */; };
+		A329198B1965F2FE00BEE62E /* MyData.m in Sources */ = {isa = PBXBuildFile; fileRef = A329198A1965F2FE00BEE62E /* MyData.m */; };
+		A3C6A6F41965909D0089BB87 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C6A6F31965909C0089BB87 /* icon1.png */; };
 		B121CAE91958D18E000F295B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B121CAE81958D18E000F295B /* Images.xcassets */; };
 		B12B47D4195E1626009988FC /* GameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B12B47D3195E1626009988FC /* GameUtilities.m */; };
 		B15A6782196493310033A529 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B15A6781196493310033A529 /* Camera.png */; };
@@ -108,7 +109,9 @@
 		9CFE0B9514E5B12B00408F86 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		9CFE0B9614E5B12B00408F86 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		9CFE0B9714E5B12B00408F86 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		B121CAE61958D150000F295B /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon1.png; path = ../../icon1.png; sourceTree = "<group>"; };
+		A32919891965F2FE00BEE62E /* MyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyData.h; path = App1Day1/MyData.h; sourceTree = SOURCE_ROOT; };
+		A329198A1965F2FE00BEE62E /* MyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyData.m; path = App1Day1/MyData.m; sourceTree = SOURCE_ROOT; };
+		A3C6A6F31965909C0089BB87 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
 		B121CAE81958D18E000F295B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B12B47D2195E1626009988FC /* GameUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUtilities.h; path = Utilities/GameUtilities.h; sourceTree = "<group>"; };
 		B12B47D3195E1626009988FC /* GameUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameUtilities.m; path = Utilities/GameUtilities.m; sourceTree = "<group>"; };
@@ -209,12 +212,14 @@
 				B15A67831964A61E0033A529 /* camera.jpg */,
 				B18964AB195F534000DA862F /* icon2.png */,
 				B18964A9195F52BE00DA862F /* iphone4.png */,
-				B121CAE61958D150000F295B /* icon1.png */,
+				A3C6A6F31965909C0089BB87 /* icon1.png */,
 				B15A6781196493310033A529 /* Camera.png */,
 				9C21AF1E14E4579F00DB003E /* App1Day1-Info.plist */,
 				9C21AF1F14E4579F00DB003E /* InfoPlist.strings */,
 				9C21AF2214E4579F00DB003E /* main.m */,
 				9C21AF2414E4579F00DB003E /* App1Day1-Prefix.pch */,
+				A32919891965F2FE00BEE62E /* MyData.h */,
+				A329198A1965F2FE00BEE62E /* MyData.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -308,6 +313,11 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Marin Todorov";
+				TargetAttributes = {
+					9C21AF1114E4579F00DB003E = {
+						DevelopmentTeam = FUAL5YWB5G;
+					};
+				};
 			};
 			buildConfigurationList = 9C21AF0C14E4579F00DB003E /* Build configuration list for PBXProject "App1Day1" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -338,11 +348,11 @@
 				9C60DA8E14E5478C00442413 /* placeholder.png in Resources */,
 				B15A67891964A9D30033A529 /* Gestures.png in Resources */,
 				B15A678A1964A9D30033A529 /* Players.png in Resources */,
-				B121CAE71958D150000F295B /* icon1.png in Resources */,
 				B15A67861964A77F0033A529 /* quiz.jpg in Resources */,
 				B18964AC195F534000DA862F /* icon2.png in Resources */,
 				B15A6782196493310033A529 /* Camera.png in Resources */,
 				9C0C5D5C1503722E000A19FD /* Storyboard.storyboard in Resources */,
+				A3C6A6F41965909D0089BB87 /* icon1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +381,7 @@
 				9CC401AB16086CB300EAA7AA /* AFJSONRequestOperation.m in Sources */,
 				9CC401AC16086CB300EAA7AA /* AFJSONUtilities.m in Sources */,
 				9CC401AD16086CB300EAA7AA /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A329198B1965F2FE00BEE62E /* MyData.m in Sources */,
 				9CC401AE16086CB300EAA7AA /* AFPropertyListRequestOperation.m in Sources */,
 				B12B47D4195E1626009988FC /* GameUtilities.m in Sources */,
 				9CC401AF16086CB300EAA7AA /* AFURLConnectionOperation.m in Sources */,
@@ -444,10 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Waitrose LTD";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Waitrose LTD";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iReporter/App1Day1-Prefix.pch";
 				INFOPLIST_FILE = "iReporter/App1Day1-Info.plist";
 				PRODUCT_NAME = App1Day1;
+				PROVISIONING_PROFILE = "76824926-64BB-40C0-93E4-E482BF282ABA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -457,10 +471,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Waitrose LTD";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Waitrose LTD";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iReporter/App1Day1-Prefix.pch";
 				INFOPLIST_FILE = "iReporter/App1Day1-Info.plist";
 				PRODUCT_NAME = App1Day1;
+				PROVISIONING_PROFILE = "76824926-64BB-40C0-93E4-E482BF282ABA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

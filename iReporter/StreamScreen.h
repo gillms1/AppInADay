@@ -13,7 +13,11 @@
     IBOutlet UIBarButtonItem* btnCompose;
     IBOutlet UIBarButtonItem* btnRefresh;
     IBOutlet UIScrollView* listView;
+    IBOutlet UILabel* scoreLabel;
+    int count;
 }
+@property (strong, nonatomic) NSNumber* score;
+
 
 //refresh the photo stream
 -(IBAction)btnRefreshTapped;

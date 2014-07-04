@@ -10,24 +10,53 @@
 #import "API.h"
 #import "PhotoView.h"
 #import "StreamPhotoScreen.h"
+#import "MyData.h"
 
 @interface StreamScreen(private)
 
+
+@property(strong, nonatomic) MyData *myData;
 -(void)refreshStream;
 -(void)showStream:(NSArray*)stream;
-
 @end
 
 @implementation StreamScreen
 
+@synthesize score;
+
 #pragma mark - View lifecycle
 
 -(void)viewDidLoad {
+ 
     [super viewDidLoad];
     self.navigationItem.title = @"Partner Place Puzzle";
     self.navigationItem.rightBarButtonItem = btnCompose;
     self.navigationItem.leftBarButtonItem = btnRefresh;
 	//show the photo stream
+    //self.myData = [[MyData alloc]init];
+    //[MyData init];
+    
+    int *scoreInt = [scoreLabel.text intValue];
+    scoreInt++;
+    
+
+    //NSString *newCountString = [scoreNumber stringValue];
+    
+    //scoreLabel.text = newCountString;
+    scoreLabel.textColor = [UIColor greenColor];
+    
+    //add to include status bar to avoid overlapping
+    UIView *addStatusBar = [[UIView alloc] init];
+    addStatusBar.frame = CGRectMake(0, 0, 1024, 20);
+    addStatusBar.backgroundColor = [UIColor whiteColor]; //change this to match your navigation bar
+    [self.view addSubview:addStatusBar];
+    
+    /*MyData *myData = [MyData alloc];
+    
+    [myData init];
+    int thiscount = [myData.myCount intValue];
+    
+    NSLog(@"%d",  thiscount);*/
 	[self refreshStream];
 }
 

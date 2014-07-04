@@ -13,7 +13,7 @@
     IBOutlet UIImageView* photo;
     IBOutlet UIBarButtonItem* btnAction;
     IBOutlet UITextField* fldTitle;
-    IBOutlet UITextField* comment;
+   // IBOutlet UITextField* comment;
     
 }
 

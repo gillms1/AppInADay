@@ -8,11 +8,12 @@
 
 #import "StreamPhotoScreen.h"
 #import "API.h"
+#import "StreamScreen.h"
 
 
 @interface StreamPhotoScreen(){
     NSArray *_pickerData;
-
+    int currentScore;
 }
 @end
 
@@ -31,6 +32,12 @@
 		lblTitle.text = [photo objectForKey:@"title"];
         location =[photo objectForKey:@"title"];
 	}];
+    
+    UIView *addStatusBar = [[UIView alloc] init];
+    addStatusBar.frame = CGRectMake(0, 0, 1024, 20);
+    addStatusBar.backgroundColor = [UIColor whiteColor]; //change this to match your navigation bar
+    [self.view addSubview:addStatusBar];
+    
 	//load the big size photo
 	NSURL* imageURL = [api urlForImageWithId:IdPhoto isThumb:NO];
 	[photoView setImageWithURL: imageURL];
@@ -42,6 +49,7 @@
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
+   
     correctAnswerLabel.hidden = YES;
     incorrectAnswerLabel.hidden = YES;
 
@@ -94,6 +102,7 @@
     }else{
         incorrectAnswerLabel.hidden = NO;
         incorrectAnswerLabel.text = @"The photos is from %d",_pickerData[row];
+        //[self performSegueWithIdentifier:@"IncrementCount" sender:[NSNumber numberWithInt:pickerView.tag]];
     }
     
     
@@ -104,6 +113,16 @@
     return [_pickerData objectAtIndex:row];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([@"IncrementCount" compare: segue.identifier]==NSOrderedSame) {
+        
+        StreamScreen* streamScreen = segue.destinationViewController;
+        
+        currentScore = currentScore + 1;
+        streamScreen.score = [NSNumber numberWithInt:currentScore];
+    }
+    
+}
 
 @end
 
