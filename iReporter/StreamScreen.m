@@ -42,7 +42,7 @@
 
     //NSString *newCountString = [scoreNumber stringValue];
     
-    //scoreLabel.text = newCountString;
+    scoreLabel.text = [NSString stringWithFormat:@"%i", [MyData sharedInstance].myCount];
     scoreLabel.textColor = [UIColor greenColor];
     
     //add to include status bar to avoid overlapping
@@ -78,6 +78,9 @@
 }
 
 -(void)showStream:(NSArray*)stream {
+    
+    stream =[self fileterArray:stream];
+    
     // 1 remove old photos
     for (UIView* view in listView.subviews) {
         [view removeFromSuperview];
@@ -93,6 +96,26 @@
     int listHeight = ([stream count]/3 + 1)*(kThumbSide+kPadding);
     [listView setContentSize:CGSizeMake(320, listHeight)];
     [listView scrollRectToVisible:CGRectMake(0, 0, 10, 10) animated:YES];
+}
+
+-(NSArray*)fileterArray:(NSArray*)arr
+{
+    NSMutableArray *filteredImages = [[NSMutableArray alloc]init];
+    NSMutableArray *allImagesArray = [[NSMutableArray alloc]initWithArray:arr];
+    
+    while ([allImagesArray count]>0 && [filteredImages count]<10) {
+        NSInteger index = [self getRandomNumberBetween:0 maxNumber:[allImagesArray count]];
+
+        [filteredImages addObject:[allImagesArray objectAtIndex:index]];
+        [allImagesArray removeObjectAtIndex:index];
+    }
+    
+    return filteredImages;
+}
+
+- (NSInteger)getRandomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
+{
+    return min + arc4random() % (max - min + 1);
 }
 
 -(void)didSelectPhoto:(PhotoView*)sender {

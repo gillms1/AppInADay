@@ -9,6 +9,7 @@
 #import "StreamPhotoScreen.h"
 #import "API.h"
 #import "StreamScreen.h"
+#import "MyData.h"
 
 
 @interface StreamPhotoScreen(){
@@ -43,14 +44,15 @@
 	[photoView setImageWithURL: imageURL];
     
     //add the location selector
-    _pickerData = [[NSArray alloc]initWithObjects:@"Ambleside",
-                   @"Bala",@"Odney",@"Ambleside",@"JL Victoria", nil];
+    _pickerData = [[NSArray alloc]initWithObjects:@"Ambleside",@"Bala",@"Bracknell Jubilee House",@"Bracknell Taylor House",@"Branch 615 Foregate St",
+                   
+                   @"Branch 833 Trinity Sq",@"Branch 834 Clifton",@"Brownsea",@"JL Stratford City",
+                   
+                   @"Leckford",    @"Odney",@"RDC Celestia",    @"RDC Leyland",@" Victoria",nil];
     
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
-   
-    correctAnswerLabel.hidden = YES;
     incorrectAnswerLabel.hidden = YES;
 
 }
@@ -95,13 +97,21 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     // [myTextField setText:[pickerArray objectAtIndex:row]];
-
+    
     if ([location isEqualToString:_pickerData[row]]){
-        correctAnswerLabel.hidden = NO;
-        
+        incorrectAnswerLabel.hidden = NO;
+        incorrectAnswerLabel.text = @"Correct!";
+        incorrectAnswerLabel.textColor = [UIColor greenColor];
+        [MyData sharedInstance].myCount++;
     }else{
         incorrectAnswerLabel.hidden = NO;
-        incorrectAnswerLabel.text = @"The photos is from %d",_pickerData[row];
+        incorrectAnswerLabel.textColor = [UIColor redColor];
+        incorrectAnswerLabel.text = [NSString stringWithFormat: @"The photos is from %@", location];
+        
+        if ([MyData sharedInstance].myCount > 0) {
+            [MyData sharedInstance].myCount--;
+        }
+        
         //[self performSegueWithIdentifier:@"IncrementCount" sender:[NSNumber numberWithInt:pickerView.tag]];
     }
     
@@ -112,6 +122,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return [_pickerData objectAtIndex:row];
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([@"IncrementCount" compare: segue.identifier]==NSOrderedSame) {
@@ -124,6 +135,11 @@
     
 }
 
+- (IBAction)submitAnswer:(id)sender {
+  //  self.picker.
+    //NSString = _pickerData[row]
+    
+}
 @end
 
 

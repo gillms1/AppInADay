@@ -12,14 +12,28 @@
 
 @synthesize myCount;
 
--(void)init{
++(MyData*) sharedInstance {
     
+    static MyData *instance = nil;
+    static dispatch_once_t onceToken;
     
-    myCount = [NSNumber numberWithInt:10];
+    dispatch_once(&onceToken, ^{
+        instance = [[[self class] alloc]init];
+    });
+    
+    return instance;
     
 }
 
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.myCount = 0;
+    }
+    return self;
+}
 
 
 @end

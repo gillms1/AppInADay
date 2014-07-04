@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MyData : NSObject {
+@interface MyData : NSObject
 
-    NSNumber *myCount;
-}
++(MyData*) sharedInstance;
 
-@property(nonatomic, retain) NSNumber* myCount;
+@property(nonatomic, assign) int myCount;
 
-
--(void) init;
 
 
 @end
