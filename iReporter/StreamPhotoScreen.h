@@ -14,12 +14,17 @@
     IBOutlet UIImageView* photoView;
     IBOutlet UILabel* lblTitle;
     IBOutlet UILabel *incorrectAnswerLabel;
+    IBOutlet UIButton* selectButton;
     }
+@property (strong, nonatomic) NSString* ImageNumber;
 @property (strong, nonatomic) NSNumber* IdPhoto;
 @property (strong, nonatomic) NSString* location;
+@property (strong, nonatomic) NSString* selectedLocation;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *selectonLabel;
 - (IBAction)submitAnswer:(id)sender;
+- (IBAction)back:(id)sender;
+
 
 @end
 

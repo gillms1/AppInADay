@@ -22,6 +22,8 @@
 
 @synthesize IdPhoto;
 @synthesize location;
+@synthesize selectedLocation;
+@synthesize ImageNumber;
 
 -(void)viewDidLoad {
 	API* api = [API sharedInstance];
@@ -54,6 +56,9 @@
     self.picker.delegate = self;
     
     incorrectAnswerLabel.hidden = YES;
+    
+    //initialise selector with first element in case user presses select without first using the picker
+    selectedLocation = [_pickerData objectAtIndex:0];
 
 }
 
@@ -97,24 +102,9 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     // [myTextField setText:[pickerArray objectAtIndex:row]];
+    selectedLocation =_pickerData[row];
     
-    if ([location isEqualToString:_pickerData[row]]){
-        incorrectAnswerLabel.hidden = NO;
-        incorrectAnswerLabel.text = @"Correct!";
-        incorrectAnswerLabel.textColor = [UIColor greenColor];
-        [MyData sharedInstance].myCount++;
-    }else{
-        incorrectAnswerLabel.hidden = NO;
-        incorrectAnswerLabel.textColor = [UIColor redColor];
-        incorrectAnswerLabel.text = [NSString stringWithFormat: @"The photos is from %@", location];
-        
-        if ([MyData sharedInstance].myCount > 0) {
-            [MyData sharedInstance].myCount--;
-        }
-        
         //[self performSegueWithIdentifier:@"IncrementCount" sender:[NSNumber numberWithInt:pickerView.tag]];
-    }
-    
     
     
     
@@ -129,17 +119,43 @@
         
         StreamScreen* streamScreen = segue.destinationViewController;
         
-        currentScore = currentScore + 1;
+        //currentScore = currentScore + 1;
         streamScreen.score = [NSNumber numberWithInt:currentScore];
     }
     
 }
 
 - (IBAction)submitAnswer:(id)sender {
-  //  self.picker.
-    //NSString = _pickerData[row]
+    
+    if ([location isEqualToString:selectedLocation]){
+        incorrectAnswerLabel.hidden = NO;
+        incorrectAnswerLabel.text = @"Correct!";
+        incorrectAnswerLabel.textColor = [UIColor greenColor];
+        //[MyData sharedInstance].myCount++;
+        [[MyData sharedInstance] score:ImageNumber withAnswer:[NSNumber numberWithBool:YES]];
+
+    }else{
+        incorrectAnswerLabel.hidden = NO;
+        incorrectAnswerLabel.textColor = [UIColor redColor];
+        incorrectAnswerLabel.text = [NSString stringWithFormat: @"The photo is from %@", location];
+        
+        if ([MyData sharedInstance].myCount > 0) {
+            //[MyData sharedInstance].myCount--;
+            [[MyData sharedInstance] score:ImageNumber withAnswer:[NSNumber numberWithBool:NO]];
+
+        }
+    }
+    
     
 }
+- (IBAction)back:(id)sender{
+    
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    
+
+
+}
+
 @end
 
 

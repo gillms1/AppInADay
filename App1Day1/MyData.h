@@ -14,6 +14,16 @@
 
 @property(nonatomic, assign) int myCount;
 
+//Only increment the score if the image has not been guessed before
+//@property(nonatomic, assign) NSMutableArray* imageGuessed;
+@property(nonatomic, strong) NSMutableDictionary* imageGuessed;
+
+//record if the image was guessed correctly;
+//@property(nonatomic, assign) NSMutableArray* imageGuessedCorrectly;
+@property(nonatomic, strong) NSMutableDictionary* imageGuessedCorrectly;
 
 
+
+//-(void) initialiseGuessesAndScores;
+-(void) score: (NSString*)imageNumber withAnswer: (bool)isCorrect;
 @end

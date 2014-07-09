@@ -14,12 +14,15 @@
     IBOutlet UIBarButtonItem* btnRefresh;
     IBOutlet UIScrollView* listView;
     IBOutlet UILabel* scoreLabel;
+    IBOutlet UIButton* quitButton;
     int count;
 }
 @property (strong, nonatomic) NSNumber* score;
-
+@property (strong, nonatomic) NSString* ImageNumber;
 
 //refresh the photo stream
 -(IBAction)btnRefreshTapped;
+-(IBAction)quitGame;
+
 
 @end

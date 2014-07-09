@@ -23,6 +23,7 @@
 @implementation StreamScreen
 
 @synthesize score;
+@synthesize ImageNumber;
 
 #pragma mark - View lifecycle
 
@@ -41,6 +42,7 @@
     
 
     //NSString *newCountString = [scoreNumber stringValue];
+    [MyData sharedInstance].myCount=0;
     
     scoreLabel.text = [NSString stringWithFormat:@"%i", [MyData sharedInstance].myCount];
     scoreLabel.textColor = [UIColor greenColor];
@@ -58,6 +60,13 @@
     
     NSLog(@"%d",  thiscount);*/
 	[self refreshStream];
+}
+-(void) viewWillAppear:(BOOL)animated{
+  int temp = [MyData sharedInstance].myCount;
+    NSString*  tempS = [NSString stringWithFormat:@"%d", temp];
+    scoreLabel.text = tempS;
+    //scoreLabel.textColor = [UIColor greenColor];
+    
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -79,7 +88,7 @@
 
 -(void)showStream:(NSArray*)stream {
     
-    stream =[self fileterArray:stream];
+    stream =[self filterArray:stream];
     
     // 1 remove old photos
     for (UIView* view in listView.subviews) {
@@ -98,13 +107,14 @@
     [listView scrollRectToVisible:CGRectMake(0, 0, 10, 10) animated:YES];
 }
 
--(NSArray*)fileterArray:(NSArray*)arr
+-(NSArray*)filterArray:(NSArray*)arr
 {
     NSMutableArray *filteredImages = [[NSMutableArray alloc]init];
     NSMutableArray *allImagesArray = [[NSMutableArray alloc]initWithArray:arr];
     
     while ([allImagesArray count]>0 && [filteredImages count]<10) {
-        NSInteger index = [self getRandomNumberBetween:0 maxNumber:[allImagesArray count]];
+        //Ben 05.07.2014 Remove hang on display of random photos - The array starts at 0 , not 1
+        NSInteger index = [self getRandomNumberBetween:0 maxNumber:[allImagesArray count]-1];
 
         [filteredImages addObject:[allImagesArray objectAtIndex:index]];
         [allImagesArray removeObjectAtIndex:index];
@@ -120,16 +130,22 @@
 
 -(void)didSelectPhoto:(PhotoView*)sender {
     //photo selected - show it full screen
-    [self performSegueWithIdentifier:@"ShowPhoto" sender:[NSNumber numberWithInt:sender.tag]];   
+    ImageNumber = [sender ImageNumber];
+    [self performSegueWithIdentifier:@"ShowPhoto" sender:[NSNumber numberWithInt:sender.tag]];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([@"ShowPhoto" compare: segue.identifier]==NSOrderedSame) {
         StreamPhotoScreen* streamPhotoScreen = segue.destinationViewController;
         streamPhotoScreen.IdPhoto = sender;
-    }
+        streamPhotoScreen.ImageNumber =ImageNumber;
+      }
 }
--(IBAction)unwindToMainMenuController:(UIStoryboardSegue *)segue{
+-(IBAction)quitGame{
+    
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+
+
 }
 
 @end

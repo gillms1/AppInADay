@@ -142,4 +142,9 @@
 
 }
 
+-(IBAction)quitActionTapped:(id)sender{
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    
+}
+
 @end

@@ -14,12 +14,14 @@
     IBOutlet UIBarButtonItem* btnAction;
     IBOutlet UITextField* fldTitle;
    // IBOutlet UITextField* comment;
+    IBOutlet UIButton* quitButton;
     
 }
 
 //show the app menu 
 -(IBAction)btnActionTapped:(id)sender;
 
+-(IBAction)quitActionTapped:(id)sender;
 
 @end
 

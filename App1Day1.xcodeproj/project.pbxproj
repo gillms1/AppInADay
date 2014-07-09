@@ -189,6 +189,8 @@
 				9C60DA8014E5306800442413 /* Screens */,
 				9C21AF1D14E4579F00DB003E /* Supporting Files */,
 				9C60DA8D14E5478B00442413 /* placeholder.png */,
+				A32919891965F2FE00BEE62E /* MyData.h */,
+				A329198A1965F2FE00BEE62E /* MyData.m */,
 				9C21AF2514E4579F00DB003E /* AppDelegate.h */,
 				9C21AF2614E4579F00DB003E /* AppDelegate.m */,
 				DDA2937D1582F5180052B4F9 /* API.h */,
@@ -218,8 +220,6 @@
 				9C21AF1F14E4579F00DB003E /* InfoPlist.strings */,
 				9C21AF2214E4579F00DB003E /* main.m */,
 				9C21AF2414E4579F00DB003E /* App1Day1-Prefix.pch */,
-				A32919891965F2FE00BEE62E /* MyData.h */,
-				A329198A1965F2FE00BEE62E /* MyData.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				ORGANIZATIONNAME = "Marin Todorov";
 				TargetAttributes = {
 					9C21AF1114E4579F00DB003E = {
-						DevelopmentTeam = FUAL5YWB5G;
+						DevelopmentTeam = 3SGRRW5BK5;
 					};
 				};
 			};
@@ -455,13 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Waitrose LTD";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Waitrose LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iReporter/App1Day1-Prefix.pch";
 				INFOPLIST_FILE = "iReporter/App1Day1-Info.plist";
 				PRODUCT_NAME = App1Day1;
-				PROVISIONING_PROFILE = "76824926-64BB-40C0-93E4-E482BF282ABA";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -471,13 +471,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Waitrose LTD";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Waitrose LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iReporter/App1Day1-Prefix.pch";
 				INFOPLIST_FILE = "iReporter/App1Day1-Info.plist";
 				PRODUCT_NAME = App1Day1;
-				PROVISIONING_PROFILE = "76824926-64BB-40C0-93E4-E482BF282ABA";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

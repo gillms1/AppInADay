@@ -12,6 +12,7 @@
 @implementation PhotoView
 
 @synthesize delegate;
+@synthesize ImageNumber;
 
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -53,6 +54,7 @@
 		}];
 		NSOperationQueue* queue = [[NSOperationQueue alloc] init];
 		[queue addOperation:imageOperation];
+        ImageNumber = [NSString stringWithFormat:@"%d" ,i];
     }
     return self;
 }
