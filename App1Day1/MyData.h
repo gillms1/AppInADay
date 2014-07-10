@@ -26,4 +26,8 @@
 
 //-(void) initialiseGuessesAndScores;
 -(void) score: (NSString*)imageNumber withAnswer: (bool)isCorrect;
+-(bool) imageWasGuessed : (NSString*)imageNumber;
+-(bool) imageWasGuessedCorrectly : (NSString*)imageNumber;
+-(bool) isGameOver;
+-(void) clearScores;
 @end

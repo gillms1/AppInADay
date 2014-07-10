@@ -49,14 +49,36 @@
         if (isCorrect == YES){
             myCount++;
         }else{
-            myCount--;
+            if (myCount >0){
+               // myCount--;
+            }
         }
-        [imageGuessed setObject:[NSNumber numberWithBool:isCorrect] forKey: imageNumber];
+        [imageGuessed setObject:[NSNumber numberWithBool:YES] forKey: imageNumber];
         [imageGuessedCorrectly setObject:[NSNumber numberWithBool:isCorrect] forKey: imageNumber];
     }
 
 }
 
+-(bool) imageWasGuessed : (NSString*)imageNumber{
+    return [(NSNumber*)[imageGuessed objectForKey:imageNumber] boolValue];
+    
+}
+-(bool) imageWasGuessedCorrectly : (NSString*)imageNumber{
+    return [(NSNumber*)[imageGuessedCorrectly objectForKey:imageNumber] boolValue];
+}
+-(bool) isGameOver{
+    if (imageGuessed.count ==10)
+        return YES;
+    else
+        return NO;
+    
+}
+-(void) clearScores{
+    [imageGuessed removeAllObjects];
+    [imageGuessedCorrectly removeAllObjects];
+    self.myCount =0;
+
+}
 
 /*
 -(void) initialiseGuessesAndScores{

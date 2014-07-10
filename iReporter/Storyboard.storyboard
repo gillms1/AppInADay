@@ -17,9 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="dCT-ud-1Eh">
-                                <rect key="frame" x="66" y="106" width="189" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="dCT-ud-1Eh">
+                                <rect key="frame" x="66" y="87" width="189" height="200"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="4qF-sp-ASx"/>
+                                    <constraint firstAttribute="width" constant="189" id="gls-Q6-qrr"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Where am I in the Partnership Puzzle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-yG-0XN">
                                 <rect key="frame" x="41" y="10" width="226" height="88"/>
@@ -28,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="245" translatesAutoresizingMaskIntoConstraints="NO" id="kwq-EA-zJv">
-                                <rect key="frame" x="41" y="220" width="245" height="192"/>
+                                <rect key="frame" x="41" y="232" width="245" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Guess the location of 9 randomly selected photos. Or even, better upload something beautiful, creative or cryptic to challenge the rest of us!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -71,12 +75,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="xFM-rt-Gi2">
-                                <rect key="frame" x="66" y="108" width="189" height="145"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="xFM-rt-Gi2">
+                                <rect key="frame" x="66" y="87" width="189" height="200"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="IT4-sU-5kE"/>
+                                    <constraint firstAttribute="height" constant="200" id="hr2-w7-1pA"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to add something to the puzzle? You can add a sepia filter to take some vintage JLP shots" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="245" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-nd-xqF">
-                                <rect key="frame" x="41" y="278" width="245" height="104"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Want to add something to the puzzle? You can add a sepia filter to take some vintage JLP shots" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="239" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-nd-xqF">
+                                <rect key="frame" x="41" y="295" width="239" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="104" id="d7T-k0-sI0"/>
@@ -93,8 +101,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNd-4J-2bj">
-                                <rect key="frame" x="118" y="404" width="85" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNd-4J-2bj">
+                                <rect key="frame" x="112" y="380" width="85" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1019607931" green="0.60000002379999995" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -114,16 +122,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="U5q-34-VXZ" secondAttribute="trailing" constant="53" id="0zz-u5-cGV"/>
                             <constraint firstItem="U5q-34-VXZ" firstAttribute="top" secondItem="lvc-CD-XrW" secondAttribute="top" constant="10" id="28b-jf-1BI"/>
-                            <constraint firstItem="KoU-9T-Yye" firstAttribute="top" secondItem="DNd-4J-2bj" secondAttribute="bottom" constant="68" id="29u-67-OC8"/>
                             <constraint firstItem="DNd-4J-2bj" firstAttribute="centerX" secondItem="lvc-CD-XrW" secondAttribute="centerX" id="BMh-OW-yYV"/>
-                            <constraint firstItem="xFM-rt-Gi2" firstAttribute="leading" secondItem="lvc-CD-XrW" secondAttribute="leading" constant="66" id="CSf-uB-SGi"/>
                             <constraint firstAttribute="trailing" secondItem="Cmm-nd-xqF" secondAttribute="trailing" constant="34" id="ETv-En-YFs"/>
-                            <constraint firstItem="Cmm-nd-xqF" firstAttribute="top" secondItem="xFM-rt-Gi2" secondAttribute="bottom" constant="25" id="YlZ-nf-3rb"/>
-                            <constraint firstItem="xFM-rt-Gi2" firstAttribute="top" secondItem="U5q-34-VXZ" secondAttribute="bottom" constant="10" id="ZIJ-nt-K6R"/>
-                            <constraint firstItem="DNd-4J-2bj" firstAttribute="top" secondItem="Cmm-nd-xqF" secondAttribute="bottom" constant="22" id="ej4-d5-4ds"/>
                             <constraint firstItem="U5q-34-VXZ" firstAttribute="leading" secondItem="lvc-CD-XrW" secondAttribute="leading" constant="41" id="myr-8s-9gh"/>
                             <constraint firstItem="Cmm-nd-xqF" firstAttribute="leading" secondItem="U5q-34-VXZ" secondAttribute="leading" id="rt7-iZ-hXN"/>
-                            <constraint firstItem="DNd-4J-2bj" firstAttribute="centerX" secondItem="xFM-rt-Gi2" secondAttribute="centerX" id="uF7-mf-JDb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shoot" image="Players.png" id="Lr0-Lp-fY3"/>
@@ -500,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvp-V0-APV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1378" y="1099"/>
+            <point key="canvasLocation" x="1018" y="1124"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="ymA-gF-ibR">

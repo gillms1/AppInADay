@@ -19,6 +19,7 @@
 }
 @property (strong, nonatomic) NSNumber* score;
 @property (strong, nonatomic) NSString* ImageNumber;
+@property (strong, nonatomic) PhotoView* CurrentPhotoView;
 
 //refresh the photo stream
 -(IBAction)btnRefreshTapped;

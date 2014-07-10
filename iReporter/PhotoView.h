@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSString* ImageNumber;
 
 -(id)initWithIndex:(int)i andData:(NSDictionary*)data;
+-(void) setBorder:(bool) guessed andGuessedCorrectly:(bool) guessedCorrectly;
 
 @end

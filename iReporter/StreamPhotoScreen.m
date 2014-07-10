@@ -132,18 +132,14 @@
         incorrectAnswerLabel.text = @"Correct!";
         incorrectAnswerLabel.textColor = [UIColor greenColor];
         //[MyData sharedInstance].myCount++;
-        [[MyData sharedInstance] score:ImageNumber withAnswer:[NSNumber numberWithBool:YES]];
+        [[MyData sharedInstance] score:ImageNumber withAnswer:YES];
 
     }else{
         incorrectAnswerLabel.hidden = NO;
         incorrectAnswerLabel.textColor = [UIColor redColor];
         incorrectAnswerLabel.text = [NSString stringWithFormat: @"The photo is from %@", location];
-        
-        if ([MyData sharedInstance].myCount > 0) {
-            //[MyData sharedInstance].myCount--;
-            [[MyData sharedInstance] score:ImageNumber withAnswer:[NSNumber numberWithBool:NO]];
+        [[MyData sharedInstance] score:ImageNumber withAnswer:NO];
 
-        }
     }
     
     

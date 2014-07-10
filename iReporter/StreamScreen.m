@@ -24,6 +24,7 @@
 
 @synthesize score;
 @synthesize ImageNumber;
+@synthesize CurrentPhotoView;
 
 #pragma mark - View lifecycle
 
@@ -65,7 +66,37 @@
   int temp = [MyData sharedInstance].myCount;
     NSString*  tempS = [NSString stringWithFormat:@"%d", temp];
     scoreLabel.text = tempS;
-    //scoreLabel.textColor = [UIColor greenColor];
+    bool b1=[[MyData sharedInstance] imageWasGuessed:ImageNumber];
+    bool b2 = [[MyData sharedInstance] imageWasGuessedCorrectly:ImageNumber];
+    [CurrentPhotoView setBorder:b1 andGuessedCorrectly:b2];
+    if([[MyData sharedInstance] isGameOver]==YES){
+        NSString *msgText;
+        switch( [MyData sharedInstance].myCount ){
+            case 0:msgText=@"Try again?";break;
+            case 1:msgText=@"Try again?";break;
+            case 2:msgText=@"Try again?";break;
+            case 3:msgText=@"OK";break;
+            case 4:msgText=@"Nice try";break;
+            case 5:msgText=@"Not bad";break;
+            case 6:msgText=@"Great!";break;
+            case 7:msgText=@"Nice job!";break;
+            case 8:msgText=@"Awesome!";break;
+            case 9:msgText=@"Perfect!";break;
+        }
+                
+                
+        
+        [[[UIAlertView alloc]initWithTitle:@"Game Over!" message:msgText delegate:nil cancelButtonTitle:@"OK!" otherButtonTitles: nil] show];
+        
+        //show label
+        [[MyData sharedInstance] clearScores];
+        //get new images
+        [self refreshStream];
+        //reset score
+        scoreLabel.text = 0;
+    }
+    
+    
     
 }
 
@@ -130,6 +161,7 @@
 
 -(void)didSelectPhoto:(PhotoView*)sender {
     //photo selected - show it full screen
+    CurrentPhotoView = sender;
     ImageNumber = [sender ImageNumber];
     [self performSegueWithIdentifier:@"ShowPhoto" sender:[NSNumber numberWithInt:sender.tag]];
 }
