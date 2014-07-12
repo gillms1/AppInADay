@@ -25,6 +25,7 @@
 @synthesize score;
 @synthesize ImageNumber;
 @synthesize CurrentPhotoView;
+@synthesize startTimer;
 
 #pragma mark - View lifecycle
 
@@ -53,6 +54,7 @@
     addStatusBar.frame = CGRectMake(0, 0, 1024, 20);
     addStatusBar.backgroundColor = [UIColor whiteColor]; //change this to match your navigation bar
     [self.view addSubview:addStatusBar];
+   
     
     /*MyData *myData = [MyData alloc];
     
@@ -60,7 +62,10 @@
     int thiscount = [myData.myCount intValue];
     
     NSLog(@"%d",  thiscount);*/
-	[self refreshStream];
+    [self setupGame];
+    startTimer = YES;
+    
+   
 }
 -(void) viewWillAppear:(BOOL)animated{
   int temp = [MyData sharedInstance].myCount;
@@ -70,35 +75,90 @@
     bool b2 = [[MyData sharedInstance] imageWasGuessedCorrectly:ImageNumber];
     [CurrentPhotoView setBorder:b1 andGuessedCorrectly:b2];
     if([[MyData sharedInstance] isGameOver]==YES){
-        NSString *msgText;
-        switch( [MyData sharedInstance].myCount ){
-            case 0:msgText=@"Try again?";break;
-            case 1:msgText=@"Try again?";break;
-            case 2:msgText=@"Try again?";break;
-            case 3:msgText=@"OK";break;
-            case 4:msgText=@"Nice try";break;
-            case 5:msgText=@"Not bad";break;
-            case 6:msgText=@"Great!";break;
-            case 7:msgText=@"Nice job!";break;
-            case 8:msgText=@"Awesome!";break;
-            case 9:msgText=@"Perfect!";break;
+    
+        
+        NSString *scoreDesc = [self scoreDesc:(int)[MyData sharedInstance].myCount];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Game Over!"
+        message:[NSString stringWithFormat: @"You scored %i points %@\n",[MyData sharedInstance].myCount,scoreDesc]
+                                delegate:self  cancelButtonTitle:@"Play Again" otherButtonTitles:@"Quit",nil];
+        [alert show];
+
+        
+        
         }
-                
-                
+}
+-(void) viewDidAppear:(BOOL)animated{
+    if (startTimer){
+            timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
+        startTimer = NO;
         
-        [[[UIAlertView alloc]initWithTitle:@"Game Over!" message:msgText delegate:nil cancelButtonTitle:@"OK!" otherButtonTitles: nil] show];
-        
-        //show label
-        [[MyData sharedInstance] clearScores];
-        //get new images
-        [self refreshStream];
-        //reset score
-        scoreLabel.text = 0;
     }
+
+
+}
+
+-(void) setupGame{
+    //show label
+    [[MyData sharedInstance] clearScores];
+    //get new images
+    [self refreshStream];
+    //reset score
+    scoreLabel.text = 0;
+    seconds = 50;
+    //set up timer label
+    timerLabel.text =[NSString stringWithFormat:@"%i",seconds];
+    //start the timer
+    //timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
+}
+
+-(void) subtractTime{
+    seconds --;
+    timerLabel.text =[NSString stringWithFormat:@"%i",seconds];
+    if (seconds ==0){
+        [timer invalidate];
+        
+        NSString *scoreDesc = [self scoreDesc:(int)[MyData sharedInstance].myCount];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Time is up!"
+                                                        message:[NSString stringWithFormat: @"You scored %i points %@\n",[MyData sharedInstance].myCount,scoreDesc]
+    delegate:self
+    cancelButtonTitle:@"Play Again"
+    otherButtonTitles:@"Quit",nil];
+        [alert show];
+       
+    }
+}
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex ==[alertView cancelButtonIndex]){
+        NSLog(@"Button %i was clicked",buttonIndex );
+         [self setupGame];
+        //timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
+        startTimer = YES;
     
-    
+    }else{
+        [self quit];
+    }
+   
+}
+-(NSString*)scoreDesc:(int) score{
+    NSString *msgText;
+    switch( [MyData sharedInstance].myCount ){
+        case 0:msgText=@"Try again?";break;
+        case 1:msgText=@"Try again?";break;
+        case 2:msgText=@"Try again?";break;
+        case 3:msgText=@"OK";break;
+        case 4:msgText=@"Nice try";break;
+        case 5:msgText=@"Not bad";break;
+        case 6:msgText=@"Great!";break;
+        case 7:msgText=@"Nice job!";break;
+        case 8:msgText=@"Awesome!";break;
+        case 9:msgText=@"Fantastic!";break;
+        case 10:msgText=@"Perfect!";break;
+
+    }
+    return msgText;
     
 }
+
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
@@ -174,10 +234,16 @@
       }
 }
 -(IBAction)quitGame{
-    
+    [self quit];
+
+
+}
+-(void) quit{
+    if (timer != nil){
+        [timer invalidate];
+    }
     [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
-
-
+    
 }
 
 @end

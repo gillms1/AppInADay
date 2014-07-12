@@ -60,7 +60,7 @@
 }
 -(void) setBorder:(bool) guessed andGuessedCorrectly:(bool) guessedCorrectly{
     if (guessed == YES){
-        self.layer.borderWidth =10;
+        self.layer.borderWidth =4;
         if (guessedCorrectly == YES){
              self.layer.borderColor = [UIColor greenColor].CGColor;
         }else{
