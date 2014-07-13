@@ -104,7 +104,7 @@
     [self refreshStream];
     //reset score
     scoreLabel.text = 0;
-    seconds = 50;
+    seconds = 90;
     //set up timer label
     timerLabel.text =[NSString stringWithFormat:@"%i",seconds];
     //start the timer
@@ -129,9 +129,9 @@
 }
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex ==[alertView cancelButtonIndex]){
-        NSLog(@"Button %i was clicked",buttonIndex );
+        //NSLog(@"Button %i was clicked",buttonIndex );
          [self setupGame];
-        //timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
+        //The next time this screen is displayed, start another timer
         startTimer = YES;
     
     }else{

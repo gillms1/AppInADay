@@ -13,7 +13,4 @@
     IBOutlet UIButton *UploadBtn;
 }
 
-- (IBAction)StartGame:(id)sender;
-- (IBAction)UploadPhoto:(id)sender;
-
 @end

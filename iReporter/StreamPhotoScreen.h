@@ -25,8 +25,6 @@
 - (IBAction)submitAnswer:(id)sender;
 - (IBAction)back:(id)sender;
 
--(NSString*)scoreDesc:(int) score;
-
 @end
 
 
