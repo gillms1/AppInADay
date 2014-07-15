@@ -75,7 +75,11 @@
     bool b2 = [[MyData sharedInstance] imageWasGuessedCorrectly:ImageNumber];
     [CurrentPhotoView setBorder:b1 andGuessedCorrectly:b2];
     if([[MyData sharedInstance] isGameOver]==YES){
-    
+   
+        //we don't want a pop up from the timer too..
+        if (timer != nil) {
+        [timer invalidate];
+        }
         
         NSString *scoreDesc = [self scoreDesc:(int)[MyData sharedInstance].myCount];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Game Over!"
@@ -129,9 +133,9 @@
 }
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex ==[alertView cancelButtonIndex]){
-        //NSLog(@"Button %i was clicked",buttonIndex );
+        NSLog(@"Button %i was clicked",buttonIndex );
          [self setupGame];
-        //The next time this screen is displayed, start another timer
+        //timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
         startTimer = YES;
     
     }else{
@@ -231,6 +235,7 @@
         StreamPhotoScreen* streamPhotoScreen = segue.destinationViewController;
         streamPhotoScreen.IdPhoto = sender;
         streamPhotoScreen.ImageNumber =ImageNumber;
+        streamPhotoScreen.seconds = [NSNumber numberWithInt:seconds];
       }
 }
 -(IBAction)quitGame{

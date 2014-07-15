@@ -24,6 +24,7 @@
 @synthesize location;
 @synthesize selectedLocation;
 @synthesize ImageNumber;
+@synthesize seconds;
 
 -(void)viewDidLoad {
 	API* api = [API sharedInstance];
@@ -59,7 +60,8 @@
     
     //initialise selector with first element in case user presses select without first using the picker
     selectedLocation = [_pickerData objectAtIndex:0];
-
+    timerLabel.text = [seconds stringValue];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(subtractTime) userInfo:nil repeats:YES];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -144,8 +146,27 @@
     
     
 }
+
+-(void) subtractTime{
+    seconds = [NSNumber numberWithInt:[seconds intValue]-1];
+    timerLabel.text =[seconds stringValue];
+    if (seconds ==0){
+        if (timer != nil) {
+            [timer invalidate];
+        }
+        [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+
+        
+    }
+}
+
+
+
+
 - (IBAction)back:(id)sender{
-    
+    if (timer != nil) {
+        [timer invalidate];
+    }
     [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
     
 

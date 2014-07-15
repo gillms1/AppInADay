@@ -15,15 +15,21 @@
     IBOutlet UILabel* lblTitle;
     IBOutlet UILabel *incorrectAnswerLabel;
     IBOutlet UIButton* selectButton;
+    IBOutlet UILabel* timerLabel;
+    
+    NSTimer *timer;
     }
 @property (strong, nonatomic) NSString* ImageNumber;
 @property (strong, nonatomic) NSNumber* IdPhoto;
 @property (strong, nonatomic) NSString* location;
+@property (strong, nonatomic) NSNumber* seconds;
 @property (strong, nonatomic) NSString* selectedLocation;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *selectonLabel;
 - (IBAction)submitAnswer:(id)sender;
 - (IBAction)back:(id)sender;
+
+
 
 @end
 

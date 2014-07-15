@@ -23,6 +23,7 @@
 }
 @property (assign, nonatomic) bool* startTimer;
 @property (strong, nonatomic) NSNumber* score;
+@property (strong, nonatomic) NSNumber* seconds;
 @property (strong, nonatomic) NSString* ImageNumber;
 @property (strong, nonatomic) PhotoView* CurrentPhotoView;
 
